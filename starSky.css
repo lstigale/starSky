@@ -1,0 +1,16 @@
+body {
+  background: black;
+  margin: 0;
+  padding: 0;
+}
+
+.star {
+  border-radius: 50%;
+  position: absolute;
+  width: 5px;
+  height: 5px;
+}
+
+.fullScreen {
+  height: 100vh;
+}

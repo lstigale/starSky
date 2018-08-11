@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Star Sky</title>
+    <script type="text/javascript" src="fallingStars.js"></script>
+    <link rel="stylesheet" href="mathGame.css">
+  </head>
+  <body onload="starPlacement()">
+
+    <div onload="stars()" id="sky" class="fullScreen">
+      <script>
+        setInterval(stars, 40);
+      </script>
+    </div>
+
+  </body>
+</html>

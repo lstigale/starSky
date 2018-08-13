@@ -11,6 +11,14 @@ body {
   height: 5px;
 }
 
+.backStar {
+  background-color: rgb(134, 134, 134);
+  border-radius: 50%;
+  position: absolute;
+  width: 2px;
+  height: 2px;
+}
+
 .fullScreen {
   height: 100vh;
 }

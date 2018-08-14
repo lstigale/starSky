@@ -1,5 +1,7 @@
-var amountOfStars = Math.floor(Math.random()*(75 - 40 + 1) + 40);
-var amountOfBackStars = Math.floor(Math.random()*(300 - 200 + 1) + 200);
+var amountOfStars = 100;
+var amountOfBackStars = 500;
+var color = [];
+var counter = [];
 
 function starPlacement() {
 
@@ -12,46 +14,91 @@ var backStarDivNum = [];
 
 for (var i = 0; i < amountOfStars; i++) {
        divNum[i] = document.createElement('div');
-       divNum[i].style.left = (Math.random()*100+1) + "%";
-       divNum[i].style.top = (Math.random()*100+1) + "%";
        divNum[i].className = 'star';
-       // divNum[i].id = (i + 1);
+       divNum[i].id = ("star" + i);
        mainContainer.appendChild(divNum[i]);
        starDatabase.push(i + 1);
+       color.push(i);
+       counter.push(true);
+       document.getElementById("star" + i).style.left = (Math.random()*99) + "%";
+       document.getElementById("star" + i).style.top = (Math.random()*98) + "%";
+
      }
 
 for (var i = 0; i < amountOfBackStars; i++) {
       backStarDivNum[i] = document.createElement('div');
-      backStarDivNum[i].style.left = (Math.random()*100+1) + "%";
-      backStarDivNum[i].style.top = (Math.random()*100+1) + "%";
+      backStarDivNum[i].style.left = (Math.random()*99) + "%";
+      backStarDivNum[i].style.top = (Math.random()*98) + "%";
       backStarDivNum[i].className = 'backStar';
       mainContainer.appendChild(backStarDivNum[i]);
       backStars.push(i + 1);
     }
 }
 
-var color = 0;
-var counter = true;
 
 function stars() {
 
-  if (counter === true) {
-     if (color <= 246) {
-       color = color + Math.floor( (Math.random() * 10) + 1);
+for (var i = 0; i < color.length; i++) {
+
+  if (counter[i] === true) {
+     if (color[i] <= 248 ) {
+       color[i] = color[i] + (Math.floor(Math.random() * 10 ) + 1);
+       document.getElementById("star" + i).style.backgroundColor = "rgb("+color[i]+", "+color[i]+", "+color[i]+")";
+     }
+     else if (color[i] === undefined) {
+       color[i] = (Math.floor(Math.random() * 256) + 1);
      }
      else {
-       counter = false;
+       counter[i] = false;
+       color[i] = color[i] - (Math.floor(Math.random() * 10 ) + 1);
      }
    }
    else {
-     if (color >= 9) {
-       color = color - Math.floor( (Math.random() * 10) + 1);
+     if (color[i] >= 10) {
+       color[i] = color[i] - (Math.floor(Math.random() * 10 ) + 1);
+       document.getElementById("star" + i).style.backgroundColor = "rgb("+color[i]+", "+color[i]+", "+color[i]+")";
      }
      else {
-       counter = true;
+       color[i] = color[i] + (Math.floor(Math.random() * 10 ) + 1);
+       counter[i] = true;
+       document.getElementById("star" + i).style.left = (Math.random()*99) + "%";
+       document.getElementById("star" + i).style.top = (Math.random()*98) + "%";
      }
    }
-  for (var i = 0; i < amountOfStars; i++) {
-document.getElementsByClassName('star')[i].style.backgroundColor = "rgb("+color+", "+color+", "+color+")";
 }
+}
+
+
+var deg =  Math.floor( Math.random() * 360); /*360*/
+var red = 0;
+var backCounter = true;
+
+function background() {
+
+  if (deg === 360) {
+    deg = 1;
+  }
+  else {
+    deg = deg + 1;
+  }
+
+
+    if (backCounter === true) {
+      if (red <= 128) {
+        red = red + Math.floor( (Math.random() * 10) + 1);
+      }
+      else {
+        backCounter = false;
+      }
+    }
+    else {
+      if (red >= 9) {
+        red = red - Math.floor( (Math.random() * 10) + 1);
+      }
+      else {
+        backCounter = true;
+      }
+    }
+
+document.body.style.background = "linear-gradient(" + deg + "deg, rgb("+ red +",0,0), rgb(0,0,0))";
 }

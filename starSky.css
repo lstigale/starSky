@@ -7,8 +7,8 @@ body {
 .star {
   border-radius: 50%;
   position: absolute;
-  width: 5px;
-  height: 5px;
+  width: 4.5px;
+  height: 4.5px;
 }
 
 .backStar {
@@ -20,5 +20,14 @@ body {
 }
 
 .fullScreen {
-  height: 100vh;
+  height: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+
+  .star {
+    width: 3px;
+    height: 3px;
+  }
+
 }

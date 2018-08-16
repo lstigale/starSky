@@ -1,5 +1,5 @@
-var amountOfStars = 100;
-var amountOfBackStars = 500;
+var amountOfStars = screen.width/5;
+var amountOfBackStars = screen.width/1.5;
 var color = [];
 var counter = [];
 
@@ -68,37 +68,37 @@ for (var i = 0; i < color.length; i++) {
 }
 }
 
-
-var deg =  Math.floor( Math.random() * 360); /*360*/
-var red = 0;
-var backCounter = true;
-
-function background() {
-
-  if (deg === 360) {
-    deg = 1;
-  }
-  else {
-    deg = deg + 1;
-  }
-
-
-    if (backCounter === true) {
-      if (red <= 128) {
-        red = red + Math.floor( (Math.random() * 10) + 1);
-      }
-      else {
-        backCounter = false;
-      }
-    }
-    else {
-      if (red >= 9) {
-        red = red - Math.floor( (Math.random() * 10) + 1);
-      }
-      else {
-        backCounter = true;
-      }
-    }
-
-document.body.style.background = "linear-gradient(" + deg + "deg, rgb("+ red +",0,0), rgb(0,0,0))";
-}
+//
+// var deg =  Math.floor( Math.random() * 360); /*360*/
+// var red = 0;
+// var backCounter = true;
+//
+// function background() {
+//
+//   if (deg === 360) {
+//     deg = 1;
+//   }
+//   else {
+//     deg = deg + 1;
+//   }
+//
+//
+//     if (backCounter === true) {
+//       if (red <= 128) {
+//         red = red + Math.floor( (Math.random() * 10) + 1);
+//       }
+//       else {
+//         backCounter = false;
+//       }
+//     }
+//     else {
+//       if (red >= 9) {
+//         red = red - Math.floor( (Math.random() * 10) + 1);
+//       }
+//       else {
+//         backCounter = true;
+//       }
+//     }
+//
+// document.body.style.background = "linear-gradient(" + deg + "deg, rgb("+ red +",0,0), rgb(0,0,0))";
+// }

@@ -8,14 +8,16 @@
     <link rel="stylesheet" href="starSky.css">
   </head>
   <body onload="starPlacement()">
-<!-- onload="background()" -->
-    <div onload="stars()" id="sky" class="fullScreen">
-      <div>
+
+    <div onload="background()">
+      <div onload="stars()" id="sky" class="fullScreen">
         <script>
-          setInterval(stars, 30);
+          setInterval(stars, 50);
+          setInterval(background, 70);
         </script>
       </div>
-  </div>
+    </div>
+
 
   </body>
 </html>

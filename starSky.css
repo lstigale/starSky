@@ -1,14 +1,13 @@
 body {
-  background: black;
-  margin: 0;
   padding: 0;
+  height: 100vh;
 }
 
 .star {
   border-radius: 50%;
   position: absolute;
-  width: 4.5px;
-  height: 4.5px;
+  width: 3.5px;
+  height: 3.5px;
 }
 
 .backStar {

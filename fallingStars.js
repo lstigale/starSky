@@ -1,6 +1,6 @@
 var amountOfStars = screen.width/5;
 var amountOfBackStars = screen.width/1.5;
-var color = [];
+var starFade = []; //This is the array for the opacity
 var counter = [];
 
 function starPlacement() {
@@ -18,7 +18,7 @@ for (var i = 0; i < amountOfStars; i++) {
        divNum[i].id = ("star" + i);
        mainContainer.appendChild(divNum[i]);
        starDatabase.push(i + 1);
-       color.push(i);
+       starFade.push(undefined);
        counter.push(true);
        document.getElementById("star" + i).style.left = (Math.random()*99) + "%";
        document.getElementById("star" + i).style.top = (Math.random()*98) + "%";
@@ -38,28 +38,28 @@ for (var i = 0; i < amountOfBackStars; i++) {
 
 function stars() {
 
-for (var i = 0; i < color.length; i++) {
+for (var i = 0; i < starFade.length; i++) {
 
   if (counter[i] === true) {
-     if (color[i] <= 248 ) {
-       color[i] = color[i] + (Math.floor(Math.random() * 10 ) + 1);
-       document.getElementById("star" + i).style.backgroundColor = "rgb("+color[i]+", "+color[i]+", "+color[i]+")";
+     if (starFade[i] <= .94 ) {
+       starFade[i] = starFade[i] + (Math.floor(Math.random() * 5) / 100);
+       document.getElementById("star" + i).style.backgroundColor = "rgba(255, 255, 255, "+ starFade[i] +")";
      }
-     else if (color[i] === undefined) {
-       color[i] = (Math.floor(Math.random() * 256) + 1);
+     else if (starFade[i] === undefined) {
+       starFade[i] = (Math.floor(Math.random() * 99) / 100);
      }
      else {
        counter[i] = false;
-       color[i] = color[i] - (Math.floor(Math.random() * 10 ) + 1);
+       starFade[i] = starFade[i] - (Math.floor(Math.random() * 5) / 100);
      }
    }
    else {
-     if (color[i] >= 10) {
-       color[i] = color[i] - (Math.floor(Math.random() * 10 ) + 1);
-       document.getElementById("star" + i).style.backgroundColor = "rgb("+color[i]+", "+color[i]+", "+color[i]+")";
+     if (starFade[i] >= .05) {
+       starFade[i] = starFade[i] - (Math.floor(Math.random() * 5) / 100);
+       document.getElementById("star" + i).style.backgroundColor = "rgba(255, 255, 255, "+ starFade[i] +")";
      }
      else {
-       color[i] = color[i] + (Math.floor(Math.random() * 10 ) + 1);
+       starFade[i] = starFade[i] + (Math.floor(Math.random() * 5) / 100);
        counter[i] = true;
        document.getElementById("star" + i).style.left = (Math.random()*99) + "%";
        document.getElementById("star" + i).style.top = (Math.random()*98) + "%";
@@ -68,37 +68,60 @@ for (var i = 0; i < color.length; i++) {
 }
 }
 
-//
-// var deg =  Math.floor( Math.random() * 360); /*360*/
-// var red = 0;
-// var backCounter = true;
-//
-// function background() {
-//
-//   if (deg === 360) {
-//     deg = 1;
-//   }
-//   else {
-//     deg = deg + 1;
-//   }
-//
-//
-//     if (backCounter === true) {
-//       if (red <= 128) {
-//         red = red + Math.floor( (Math.random() * 10) + 1);
-//       }
-//       else {
-//         backCounter = false;
-//       }
-//     }
-//     else {
-//       if (red >= 9) {
-//         red = red - Math.floor( (Math.random() * 10) + 1);
-//       }
-//       else {
-//         backCounter = true;
-//       }
-//     }
-//
-// document.body.style.background = "linear-gradient(" + deg + "deg, rgb("+ red +",0,0), rgb(0,0,0))";
-// }
+
+var deg =  2;
+var red = 80;
+var backCounter = true;
+
+var reach = 30;
+var reachCounter = true;
+
+
+function background() {
+
+  if (deg === 360) {
+    deg = 2;
+  }
+  else {
+    deg = deg + 2;
+  }
+
+  if (backCounter === true) {
+    if (red <= 54) {
+        red = red + 1;
+      }
+    else {
+        backCounter = false;
+      }
+    }
+
+  else {
+    if (red >= 20) {
+        red = red - 1;
+      }
+    else {
+        backCounter = true;
+      }
+  }
+
+
+  if (reachCounter === true) {
+    if (reach <= 70) {
+        reach = reach + .1;
+      }
+    else {
+        reachCounter = false;
+      }
+    }
+
+  else {
+    if (reach >= 45) {
+        reach = reach - .1;
+      }
+    else {
+        reachCounter = true;
+      }
+  }
+
+document.body.style.background = "linear-gradient(" + deg + "deg, rgb("+red+",0,0) "+ reach +"%, rgb(0,0,0))";
+}
